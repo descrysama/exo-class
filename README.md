@@ -1,6 +1,6 @@
-# New Project
+# New EZ Project
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
+> ✨ EZZZZ.
 
 ## Available Scripts
 
