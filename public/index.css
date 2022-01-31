@@ -1,14 +1,17 @@
-#img {
-  display: block;
-  margin: auto;
-  height: 128px;
-  width: 128px;
-  padding: 2rem;
+
+form {
+  border: 1px solid black;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+form input {
+  margin: 10px;
 }
 
-#canvas {
-  display: block;
-  margin: 2rem auto;
-  width: 540px;
-  height: 540px;
+form button {
+  margin: 10px;
 }
