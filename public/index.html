@@ -13,7 +13,7 @@
 
       <!-- Joeur Gandalf -->
       <form id="formGandalf">
-        <h1>Joueur Gandalf</h1>
+        <h1>Joueur Gandalf (Magicien)</h1>
         <div>
           <input type="radio" id="Thor" name="enemyGandalf" value="Thor">
           <label for="Thor">Thor</label>
@@ -22,12 +22,32 @@
           <input type="radio" id="Odin" name="enemyGandalf" value="Odin">
           <label for="Odin">Odin</label>
         </div>
-        <button type="submit" value="Attaquer">Attaquer</button>
+        <div>
+          <input type="radio" id="Merlin" name="enemyGandalf" value="Merlin">
+          <label for="Merlin">Merlin</label>
+        </div>
+      </form>
+
+      <!-- Joeur Merlin -->
+      <form id="formMerlin">
+        <h1>Joueur Merlin (Magicien)</h1>
+        <div>
+          <input type="radio" id="Thor" name="enemyMerlin" value="Thor">
+          <label for="Thor">Thor</label>
+        </div>
+        <div>
+          <input type="radio" id="Odin" name="enemyMerlin" value="Odin">
+          <label for="Odin">Odin</label>
+        </div>
+        <div>
+          <input type="radio" id="Merlin" name="enemyMerlin" value="Merlin">
+          <label for="Merlin">Merlin</label>
+        </div>
       </form>
 
       <!-- Joueur Thor -->
       <form id="formThor">
-        <h1>Joueur Thor</h1>
+        <h1>Joueur Thor (Guerrier)</h1>
         <div>
           <input type="radio" id="Gandalf" name="enemyThor" value="Gandalf">
           <label for="Gandalf">Gandalf</label>
@@ -36,12 +56,15 @@
           <input type="radio" id="Odin2" name="enemyThor" value="Odin">
           <label for="Odin2">Odin</label>
         </div>
-        <button type="submit" value="Attaquer">Attaquer</button>
+        <div>
+          <input type="radio" id="Merlin" name="enemyThor" value="Merlin">
+          <label for="Merlin">Merlin</label>
+        </div>
       </form>
 
       <!-- Joueur Odin -->
       <form id="formOdin">
-        <h1>Joueur Odin</h1>
+        <h1>Joueur Odin (Guerrier)</h1>
         <div>
           <input type="radio" id="Gandalf2" name="enemyOdin" value="Gandalf">
           <label for="Gandalf2">Gandalf</label>
@@ -50,14 +73,20 @@
           <input type="radio" id="Thor2" name="enemyOdin" value="Thor">
           <label for="Thor2">Thor</label>
         </div>
+        <div>
+          <input type="radio" id="Merlin" name="enemyOdin" value="Merlin">
+          <label for="Merlin">Merlin</label>
+        </div>
         <button type="submit" value="Attaquer">Attaquer</button>
       </form>
+      
     </div>
 
     <!-- Contenu de jeu -->
     <div class="content">
       <h1>Tour<span id="Tour"></span></h1>
       <h3>Status Gandalf : <span id="status-Gandalf"></span></h3>
+      <h3>Status Gandalf : <span id="status-Merlin"></span></h3>
       <h3>Status Thor : <span id="status-Thor"></span></h3>
       <h3>Status Odin : <span id="status-Odin"></span></h3>
     </div>

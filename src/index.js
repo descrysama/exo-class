@@ -6,11 +6,22 @@ class Magicien {
         this.weapon = weapon;
         this.niveau = niveau;
     }
-    Attack(e) {
-        this.niveau = this.niveau+1;
-        this.magic = this.magic-5;
-        e.health = e.health - 20;
+
+    Regen() {
+        this.health += 20;
     }
+
+    AttackGuerrier(enemy) {
+        if (enemy.constructor.name != enemy instanceof Guerrier) {
+            console.log('Nous sommes Alliés');
+        }else {
+            this.niveau = this.niveau + 2;
+            this.strength = this.strength - 5;
+            enemy.health = enemy.health - 30;
+            console.log('nice Attack');
+        }
+    }
+
 
 }
 
@@ -22,10 +33,19 @@ class Guerrier {
         this.niveau = niveau;
     }
 
-    Attack(e) {
-        this.niveau = this.niveau + 2;
-        this.strength = this.strength - 5;
-        e.health = e.health - 30;
+    Regen() {
+        this.health += 20;
+    }
+
+    AttackMagicien(enemy) {
+        if (enemy.constructor.name != enemy instanceof Magicien) {
+            console.log('Nous sommes Alliés');
+        }else {
+            this.niveau = this.niveau + 2;
+            this.strength = this.strength - 5;
+            enemy.health = enemy.health - 30;
+            console.log('nice Attack');
+        }
     }
 
 }
@@ -34,14 +54,23 @@ let forms = document.getElementById('forms');
 let enemyThor = document.getElementsByName('enemyThor');
 let enemyGandalf = document.getElementsByName('enemyGandalf');
 let enemyOdin = document.getElementsByName('enemyOdin');
+let enemyMerlin = document.getElementsByName('enemyMerlin');
 
 let Gandalf = new Magicien(50, 80, 90, 'Plume du phénix', 1);
+let Merlin = new Magicien(60, 90, 110, 'Magie du Belialiun', 1);
 let Thor = new Guerrier(90, 100, 'Mjonlir', 1);
 let Odin = new Guerrier(90, 100, 'Mjonlir', 1);
 
 
 function ShowStatus() {
     document.getElementById('status-Gandalf').textContent = 
+    'Force : ' + Gandalf.strength + 
+    ' Vie : ' + Gandalf.health + 
+    ' Magie : ' + Gandalf.magic + 
+    " Avec l'arme : " + Gandalf.weapon + 
+    '. Il est maintenant Niveau ' + Gandalf.niveau;
+
+    document.getElementById('status-Merlin').textContent = 
     'Force : ' + Gandalf.strength + 
     ' Vie : ' + Gandalf.health + 
     ' Magie : ' + Gandalf.magic + 
@@ -70,9 +99,23 @@ forms.addEventListener('submit', function(e) {
     for (let i = 0; i < enemyGandalf.length; i++) {
         if (enemyGandalf[i].checked) {
             if (enemyGandalf[i].value == 'Thor') {
-                Gandalf.Attack(Thor)
+                Gandalf.AttackGuerrier(Thor)
             } else if (enemyGandalf[i].value == 'Odin') {
-                Gandalf.Attack(Odin)
+                Gandalf.AttackGuerrier(Odin)
+            } else if (enemyGandalf[i].value == 'Merlin') {
+                Merlin.AttackGuerrier(Merlin)
+            }
+        }
+    }
+    // Boucle radio Merlin
+    for (let i = 0; i < enemyMerlin.length; i++) {
+        if (enemyMerlin[i].checked) {
+            if (enemyMerlin[i].value == 'Thor') {
+                Merlin.AttackGuerrier(Thor)
+            } else if (enemyMerlin[i].value == 'Odin') {
+                Merlin.AttackGuerrier(Odin)
+            } else if (enemyMerlin[i].value == 'Gandalf') {
+                Merlin.AttackGuerrier(Gandalf)
             }
         }
     }
@@ -80,9 +123,11 @@ forms.addEventListener('submit', function(e) {
     for (let i = 0; i < enemyThor.length; i++) {
         if (enemyThor[i].checked) {
             if (enemyThor[i].value == 'Gandalf') {
-                Thor.Attack(Gandalf)
+                Thor.AttackMagicien(Gandalf)
             } else if (enemyThor[i].value == 'Odin') {
-                Thor.Attack(Odin)
+                Thor.AttackMagicien(Odin)
+            } else if (enemyThor[i].value == 'Merlin') {
+                Thor.AttackMagicien(Merlin)
             }
         }
     }
@@ -90,9 +135,11 @@ forms.addEventListener('submit', function(e) {
     for (let i = 0; i < enemyOdin.length; i++) {
         if (enemyOdin[i].checked) {
             if (enemyOdin[i].value == 'Thor') {
-                Odin.Attack(Thor)
+                Odin.AttackMagicien(Thor)
             } else if (enemyOdin[i].value == 'Gandalf') {
-                Odin.Attack(Gandalf)
+                Odin.AttackMagicien(Gandalf)
+            } else if (enemyOdin[i].value == 'Merlin') {
+                Thor.AttackMagicien(Merlin)
             }
         }
     }
@@ -100,5 +147,3 @@ forms.addEventListener('submit', function(e) {
     document.getElementById('Tour').textContent = " " + tour;
     ShowStatus()
 })
-
-
